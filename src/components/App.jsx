@@ -1,26 +1,30 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchTasks } from 'redux/operations';
+// -------- код для використання бази даних
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { fetchTasks } from 'redux/operations';
 import { Layout } from 'components/Layout/Layout';
 import { AppBar } from 'components/AppBar/AppBar';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 import { TaskList } from 'components/TaskList/TaskList';
-import { getError, getIsLoading } from 'redux/tasks/selectors';
+// -------- код для використання бази даних
+// import { getError, getIsLoading } from 'redux/tasks/selectors';
 
 export const App = () => {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  // -------- код для використання бази даних
+  // const dispatch = useDispatch();
+  // const isLoading = useSelector(getIsLoading);
+  // const error = useSelector(getError);
 
-  useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchTasks());
+  // }, [dispatch]);
 
   return (
     <Layout>
       <AppBar />
       <TaskForm />
-      {isLoading && !error && <b>Request in progress...</b>}
+
+      {/* {isLoading && !error && <b>Request in progress...</b>} */}
       <TaskList />
     </Layout>
   );
