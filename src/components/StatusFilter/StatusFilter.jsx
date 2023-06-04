@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'components/Button/Button';
 import { statusFilters } from 'redux/filters/constants';
-import { getStatusFilter } from 'redux/filters/selectors';
+import { selectStatusFilter } from 'redux/filters/selectors';
 import { setStatusFilter } from 'redux/filters/filtersSlice';
 import css from './StatusFilter.module.css';
 
 export const StatusFilter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(getStatusFilter);
+  const filter = useSelector(selectStatusFilter);
   // Викликаємо генератор екшену та передаємо значення фільтра
   // Відправляємо результат - екшен зміни фільтра
   const hendleFilterChange = filter => dispatch(setStatusFilter(filter));
