@@ -40,6 +40,6 @@ export const selectTaskCount = createSelector([selectTasks], tasks => {
 });
 
 // -------- код для використання бази даних
-// export const getIsLoading = state => state.tasks.isLoading;
+export const getIsLoading = state => state.tasks.isLoading;
 
-// export const getError = state => state.tasks.error;
+export const getError = state => state.tasks.error;
