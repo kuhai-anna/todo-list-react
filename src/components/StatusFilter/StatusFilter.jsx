@@ -13,25 +13,28 @@ export const StatusFilter = () => {
   const hendleFilterChange = filter => dispatch(setStatusFilter(filter));
 
   return (
-    <div className={css.wrapper}>
-      <Button
-        selected={filter === statusFilters.all}
-        onClick={() => hendleFilterChange(statusFilters.all)}
-      >
-        All
-      </Button>
-      <Button
-        selected={filter === statusFilters.active}
-        onClick={() => hendleFilterChange(statusFilters.active)}
-      >
-        Active
-      </Button>
-      <Button
-        selected={filter === statusFilters.completed}
-        onClick={() => hendleFilterChange(statusFilters.completed)}
-      >
-        Completed
-      </Button>
+    <div className={css.container}>
+      <h2 className={css.title}>Filter by status</h2>
+      <div className={css.wrapper}>
+        <Button
+          selected={filter === statusFilters.all}
+          onClick={() => hendleFilterChange(statusFilters.all)}
+        >
+          All
+        </Button>
+        <Button
+          selected={filter === statusFilters.active}
+          onClick={() => hendleFilterChange(statusFilters.active)}
+        >
+          Active
+        </Button>
+        <Button
+          selected={filter === statusFilters.completed}
+          onClick={() => hendleFilterChange(statusFilters.completed)}
+        >
+          Completed
+        </Button>
+      </div>
     </div>
   );
 };
