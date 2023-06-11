@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { MdClose } from 'react-icons/md';
 import css from './Task.module.css';
-import { deleteTask, toggleCompleted } from 'redux/tasks/tasksSlice';
+// import { deleteTask, toggleCompleted } from 'redux/tasks/tasksSlice';
 
 // -------- код для використання бази даних
-// import { deleteTask, toggleCompleted } from 'redux/operations';
+import { deleteTask, toggleCompleted } from 'redux/tasks/operations';
 
 export const Task = ({ task }) => {
   const dispatch = useDispatch();
@@ -12,10 +12,10 @@ export const Task = ({ task }) => {
   const hendleDelete = () => dispatch(deleteTask(task.id));
   // Викликаємо генератор екшену та передаємо ідентифікатор завдання
   // Відправляємо результат - екшен перемикання статусу завдання
-  const hendleToggle = () => dispatch(toggleCompleted(task.id));
+  // const hendleToggle = () => dispatch(toggleCompleted(task.id));
 
   // -------- код для використання бази даних
-  // const hendleToggle = () => dispatch(toggleCompleted(task));
+  const hendleToggle = () => dispatch(toggleCompleted(task));
 
   return (
     <div className={css.wrapper}>
