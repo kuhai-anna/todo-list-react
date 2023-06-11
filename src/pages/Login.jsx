@@ -6,8 +6,8 @@ const Login = () => {
     <div>
       <Helmet>
         <title>Login</title>
-        <LoginForm />
       </Helmet>
+      <LoginForm />
     </div>
   );
 };
