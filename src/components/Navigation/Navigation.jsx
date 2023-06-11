@@ -4,14 +4,17 @@ import css from './Navigation.module.css';
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
+
   return (
-    <div className={css.link} to="/">
-      <Navigation>Home</Navigation>
+    <nav>
+      <NavLink className={css.link} to="/">
+        Home
+      </NavLink>
       {isLoggedIn && (
         <NavLink className={css.link} to="/tasks">
           Tasks
         </NavLink>
       )}
-    </div>
+    </nav>
   );
 };
