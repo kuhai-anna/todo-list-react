@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage';
 
 import { filtersReducer } from './filters/filtersSlice';
 import { tasksReducer } from './tasks/tasksSlice';
+import { authReducer } from './auth/authSlice';
 // import { rootReducer } from './reducer';
 // import { tasksReducer } from './tasks/reducer';
 // import { filtersReducer } from './filters/reducer';
@@ -24,21 +25,33 @@ const rootPersistConfig = {
   whitelist: ['tasks'],
 };
 
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
 const rootReducer = combineReducers({
   tasks: tasksReducer,
   filters: filtersReducer,
 });
 
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 const persistedRootReducer = persistReducer(rootPersistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedRootReducer,
+  reducer: {
+    auth: persistedAuthReducer,
+    root: persistedRootReducer,
+  },
+
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+  devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);
