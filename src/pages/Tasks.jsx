@@ -7,15 +7,15 @@ import { Helmet } from 'react-helmet';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 import { TaskList } from 'components/TaskList/TaskList';
 // -------- код для використання бази даних
-import { getError, getIsLoading } from 'redux/tasks/selectors';
+// import { getError, getIsLoading } from 'redux/tasks/selectors';
 import { TaskCounter } from 'components/TaskCounter/TaskCounter';
 import { StatusFilter } from 'components/StatusFilter/StatusFilter';
 
 const Tasks = () => {
   // -------- код для використання бази даних
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  // const isLoading = useSelector(getIsLoading);
+  // const error = useSelector(getError);
 
   useEffect(() => {
     dispatch(fetchTasks());
@@ -32,7 +32,7 @@ const Tasks = () => {
       </div>
 
       <TaskForm />
-      {isLoading && !error && <b>Request in progress...</b>}
+      {/* {isLoading && !error && <b>Request in progress...</b>} */}
       <TaskList />
     </>
   );
