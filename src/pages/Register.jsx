@@ -6,8 +6,8 @@ const Register = () => {
     <div>
       <Helmet>
         <title>Registration</title>
-        <RegisterForm />
       </Helmet>
+      <RegisterForm />
     </div>
   );
 };
