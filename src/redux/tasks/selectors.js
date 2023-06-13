@@ -3,14 +3,12 @@ import { statusFilters } from 'redux/filters/constants';
 import { selectStatusFilter } from 'redux/filters/selectors';
 
 // "атомарний" селектор (повертає честину стану без обчислень)
-export const selectTasks = state => state.tasks;
+export const selectTasks = state => state.tasks.items;
 
 // мемоізований "складовий" селектор (повертає значення, що обчислюються)
 export const selectVisibleTasks = createSelector(
   [selectTasks, selectStatusFilter],
   (tasks, statusFilter) => {
-    console.log('Calculating visible tasks. Now memoized!');
-
     switch (statusFilter) {
       case statusFilters.active:
         return tasks.filter(task => !task.completed);
@@ -24,7 +22,7 @@ export const selectVisibleTasks = createSelector(
 
 // мемоізований "складовий" селектор
 export const selectTaskCount = createSelector([selectTasks], tasks => {
-  console.log('Calculating count tasks. Now memoized!');
+  console.log(tasks);
 
   return tasks.reduce(
     (count, task) => {
