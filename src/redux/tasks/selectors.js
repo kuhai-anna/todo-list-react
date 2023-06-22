@@ -3,7 +3,7 @@ import { statusFilters } from 'redux/filters/constants';
 import { selectStatusFilter } from 'redux/filters/selectors';
 
 // "атомарний" селектор (повертає честину стану без обчислень)
-export const selectTasks = state => state.tasks.items;
+export const selectTasks = state => state.tasks;
 
 // мемоізований "складовий" селектор (повертає значення, що обчислюються)
 export const selectVisibleTasks = createSelector(
@@ -11,20 +11,18 @@ export const selectVisibleTasks = createSelector(
   (tasks, statusFilter) => {
     switch (statusFilter) {
       case statusFilters.active:
-        return tasks.filter(task => !task.completed);
+        return tasks?.items.filter(task => !task.completed);
       case statusFilters.completed:
-        return tasks.filter(task => task.completed);
+        return tasks?.items.filter(task => task.completed);
       default:
-        return tasks;
+        return tasks?.items;
     }
   }
 );
 
 // мемоізований "складовий" селектор
 export const selectTaskCount = createSelector([selectTasks], tasks => {
-  console.log(tasks);
-
-  return tasks.reduce(
+  return tasks?.reduce(
     (count, task) => {
       if (task.completed) {
         count.completed += 1;
@@ -38,6 +36,6 @@ export const selectTaskCount = createSelector([selectTasks], tasks => {
 });
 
 // -------- код для використання бази даних
-export const getIsLoading = state => state.tasks.isLoading;
+export const getIsLoading = state => state.tasks.loading;
 
 export const getError = state => state.tasks.error;
