@@ -1,9 +1,8 @@
 // -------- код для використання бази даних
 import { useDispatch } from 'react-redux'; //useSelector
 import { useEffect } from 'react';
-import { fetchTasks } from 'redux/tasks/operations';
-
 import { Helmet } from 'react-helmet';
+import { fetchTasks } from 'redux/tasks/operations';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 import { TaskList } from 'components/TaskList/TaskList';
 // -------- код для використання бази даних
